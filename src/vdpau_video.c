@@ -318,6 +318,8 @@ vdpau_QuerySurfaceAttributes(
     unsigned int       *num_attribs
 )
 {
+    unsigned int num_formats, i;
+    VAImageFormat format_list[32];
     VDPAU_DRIVER_DATA_INIT;
 
     object_config_p obj_config;
@@ -327,8 +329,10 @@ vdpau_QuerySurfaceAttributes(
     if (!attrib_list && !num_attribs)
         return VA_STATUS_ERROR_INVALID_PARAMETER;
 
+    vdpau_QueryImageFormats(ctx, format_list, &num_formats);
+
     if (!attrib_list) {
-        *num_attribs = 2;
+        *num_attribs = 2 + num_formats;
         return VA_STATUS_SUCCESS;
     }
 
@@ -352,6 +356,13 @@ vdpau_QuerySurfaceAttributes(
         attrib_list[1].flags = VA_SURFACE_ATTRIB_GETTABLE;
         attrib_list[1].value.type = VAGenericValueTypeInteger;
         attrib_list[1].value.value.i = max_height;
+
+        for (i = 0; i < num_formats && i+2 < *num_attribs; i++) {
+            attrib_list[i+2].type = VASurfaceAttribPixelFormat;
+            attrib_list[i+2].flags = VA_SURFACE_ATTRIB_GETTABLE;
+            attrib_list[i+2].value.type = VAGenericValueTypeInteger;
+            attrib_list[i+2].value.value.i = format_list[i].fourcc;
+        }
     }
 
     return VA_STATUS_SUCCESS;
