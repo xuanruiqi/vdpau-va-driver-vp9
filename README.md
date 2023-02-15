@@ -1,3 +1,7 @@
+# HELP NEEDED!
+
+With the removal of the `--use-gl=desktop` flag, this extension is extremely brittle on Chromium. It doesn't work at all with default ANGLE implementation, and not really with EGL either. However, I don't understand the code base at all, so help is highly appreciated.
+
 # vdpau-va-driver-vp9
 Experimental VP9 codec support for vdpau-va-driver (NVIDIA VDPAU-VAAPI wrapper) and chromium-vaapi.
 
