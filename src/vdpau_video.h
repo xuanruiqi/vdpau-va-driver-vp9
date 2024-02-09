@@ -291,13 +291,12 @@ vdpau_CreateSurfaceFromCIFrame(
 ) attribute_hidden;
 
 // vaCreateSurfaceFromV4L2Buf
-// XXX: compile problem?
-/*VAStatus
+VAStatus
 vdpau_CreateSurfaceFromV4L2Buf(
     VADriverContextP    ctx,
     int                 v4l2_fd,
     VASurfaceID        *surface
-) attribute_hidden;*/
+) attribute_hidden;
 
 // vaCopySurfaceToBuffer
 VAStatus
