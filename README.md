@@ -1,6 +1,11 @@
-# HELP NEEDED!
+# DEPRECATED: use nvidia-vaapi-driver!
 
-With the removal of the `--use-gl=desktop` flag, this extension is extremely brittle on Chromium. It doesn't work at all with default ANGLE implementation, and not really with EGL either. However, I don't understand the code base at all, so help is highly appreciated.
+This package doesn't work, unless you have a very old Chromium and NVIDIA driver. However, [nvidia-vaapi-driver](https://github.com/elFarto/nvidia-vaapi-driver)
+provides a VA-API compatibility layer via NVDEC, including Chromium support (with Chromium >= 129) on both X and Wayland for H264 and VP8/9.
+
+If you haven't done so, please migrate to `nvidia-vaapi-driver` as soon as possible. This package will not be maintained as there is no viable way for support
+to be continued.
+
 
 # vdpau-va-driver-vp9
 Experimental VP9 codec support for vdpau-va-driver (NVIDIA VDPAU-VAAPI wrapper) and chromium-vaapi.
